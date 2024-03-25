@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="he" >
+          <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>{{title}}</title>
+          <link rel="stylesheet" href="/css/{{css}}">
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+     </head>
+     <body>
+          
+               {{{body}}}
+               
+               {{> footer}}
+
+<script>
+fetch('/api/session')
+  .then(response => response.json())
+  .then(data => {
+    if (data.loggedIn) {
+      const userInfo = document.getElementById('user-info');
+      userInfo.innerHTML = `<div class="red"><img src="/uploads/pics/${data.profilePicture}" alt="Profile Picture" style="width: 50px; height: 50px;border-radius:50%;"> Hello, ${data.userName}<span class="logout"><a href="/logout">logout</a></span></div>`;
+    } else {
+      document.getElementById('user-info').innerHTML = '<a href="/signup">signup</a>/<a href="/login">login</a>';
+    }
+  })
+  .catch(error => console.error('Error:', error));
+</script>
+
+     </body>
+</html>

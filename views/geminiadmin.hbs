@@ -1,0 +1,62 @@
+<div class="container">
+                <div class="new-students">
+                    <div class="title">
+                        <h2>managers</h2>
+                    </div>
+                    <table class="namage">
+                        <tr>
+                            <th>question</th>
+                            <th>answer</th>
+                            <th>user Email</th>
+                            <th></th>
+                        </tr>
+                    {{#each geminis}}
+                         
+                         <tr>
+                              <td class="que">{{this.question}}</td> <!-- שים לב לשימוש באות קטנה אם זה מה שמוגדר במודל שלך -->
+                              <td class="answ">{{this.answer}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                              <td class="em">{{this.userEmail}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                              <td><a href="#" class="btn delete-btn" data-id="{{this._id}}">delete Gemini</a></td>
+                         </tr>
+                         
+                    {{/each}}
+                    </table>
+               
+                </div>
+              
+                </div>
+<script>
+     document.addEventListener('DOMContentLoaded', () => {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const userId = this.getAttribute('data-id');
+            
+            fetch(`/admin/gemini/${userId}`, {
+                method: 'DELETE', // שימוש בשיטת DELETE
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('User deleted successfully');
+                    // Optionally refresh the page or update the UI accordingly
+                    location.reload(); // רענון הדף להצגת השינויים
+                } else {
+                    alert('Error deleting user');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error);
+            });
+        });
+    });
+});
+</script>

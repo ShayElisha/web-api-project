@@ -1,0 +1,28 @@
+<div class="container">
+                <div class="new-students">
+                    <div class="title">
+                        <h2>managers</h2>
+                    </div>
+                    <table class="namage">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Option</th>
+                        </tr>
+                    {{#each users}}
+                         {{#if isAdmin}}
+                         <tr>
+                              <td>{{this.Username}}</td> <!-- שים לב לשימוש באות קטנה אם זה מה שמוגדר במודל שלך -->
+                              <td>{{this.Email}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                              <td>{{this.phon}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                              <td><img src="/uploads/pics/{{this.profile}}" alt=""></td>
+                         </tr>
+                         {{/if}}
+                    {{/each}}
+                    </table>
+               
+                </div>
+              
+                </div>
+<script>

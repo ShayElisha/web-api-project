@@ -1,0 +1,60 @@
+<div class="container">
+                <div class="new-students">
+                    <div class="title">
+                        <h2>managers</h2>
+                    </div>
+                    <table class="namage">
+                        <tr>
+                            <th>fullUrl</th>
+                            <th>shortUrl</th>
+                            <th>clicks</th>
+                            <th>Option</th>
+                        </tr>
+                    {{#each urls}}
+                         <tr>
+                              <td>{{this.fullUrl}}</td> <!-- שים לב לשימוש באות קטנה אם זה מה שמוגדר במודל שלך -->
+                              <td><a href="/shortURL/{{this.shortUrl}}" target="_blank">{{this.shortUrl}}</a></td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                              <td>{{this.clicks}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                              <td><a href="#" class="btn delete-btn" data-id="{{this._id}}">delete Url</a></td>
+                         </tr>
+                    {{/each}}
+                    </table>
+               
+                </div>
+              
+                </div>
+<script>
+     document.addEventListener('DOMContentLoaded', () => {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const userId = this.getAttribute('data-id');
+            
+            fetch(`/admin/urls/${userId}`, {
+                method: 'DELETE', // שימוש בשיטת DELETE
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('User deleted successfully');
+                    // Optionally refresh the page or update the UI accordingly
+                    location.reload(); // רענון הדף להצגת השינויים
+                } else {
+                    alert('Error deleting user');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert(error);
+            });
+        });
+    });
+});
+</script>

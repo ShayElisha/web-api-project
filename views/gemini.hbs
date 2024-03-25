@@ -1,0 +1,48 @@
+
+{{> navbar}}
+<div class="con">
+                    <h1>My Gemini</h1>
+          <div class="board">
+                    <label for="history" class="his">You want to see your history</label><a href="/gemini/all" class="history a">history</a>
+                    </div>
+          <div class="text">
+               <div class="div">
+               <input type="file" name="pic" id="pic"><label for="pic" class="pic-label"><i class='bx bx-upload'></i></label>
+               <input type="text" id="usergenerate" placeholder="Ask Gemini...">
+               <button type="button" class="btn" id="btngenerteText"><i class='bx bxs-send'></i></button>
+               
+                    </div>
+          </div>
+          <div class="div">
+               <div class="bigbox">
+                     <div id="geminiresponse"></div>
+               </div></div>
+              
+     </div>
+
+<script>
+     document.getElementById('btngenerteText').addEventListener('click',(event)=>{
+          let Prompt=document.getElementById('usergenerate').value
+          console.log(Prompt)
+          fetch('/gemini',{
+                    method:'POST',body:JSON.stringify(
+                    {Prompt}
+                    ),
+                    headers:{
+                         "Content-Type":"application/json"
+                    }
+               }).then(res=>res.json()).then((data)=>{
+                    alert(data.text),
+                    document.getElementById('geminiresponse').innerText=data.text
+                    
+                    const hebrewRegex = /[\u0590-\u05FF]/;
+                    const isHebrew = hebrewRegex.test(Prompt);
+                    
+                    // Set the direction of the response text based on the language
+                    const responseDirection = isHebrew ? 'rtl' : 'ltr';
+                    document.getElementById('geminiresponse').style.direction = responseDirection;
+                    document.getElementById('geminiresponse').innerText = data.text
+               })
+     })
+     
+</script>

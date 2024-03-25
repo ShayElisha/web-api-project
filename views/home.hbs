@@ -1,0 +1,49 @@
+{{> navbar}}
+<div class="sec">
+     <div class="tit">
+     <h1>gemini for better life</h1>
+<p>The innovative development in the world to change the crafts: <br>the power the way we think, work and create, every day.</p>
+</div>
+<div class="c-box">
+          <div class="card1">
+               <div class="logo">
+               <img src="/pic/gemini1.png" >
+               </div>
+               <div class="dom">
+               <p id="info">If you want to use you must register/log in</p>
+               <div class="card-body">
+               <button class="card-log"><a href="/login">Login</a></button>
+               <button class="card-log"><a href="/signup">Signup</a></button>
+               </div></div>
+          </div>
+          </div>
+</div>
+
+<div class="news-con">
+  <h2>14-news</h2>
+  {{#each articles}}
+  <div class="news-box">
+    <a href="{{this.link}}"><h3>{{this.title}}</h3></a>
+  </div>
+  {{/each}}
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  fetch('/api/session')
+    .then(response => response.json())
+    .then(data => {
+      if (data.loggedIn) {
+        const userInfo = document.querySelector('.card-body');
+        const Info = document.querySelector('#info');
+         // Fixed selector
+        userInfo.innerHTML = `<p class="do">Log in successfully,<br> you can browse the site</p>`;
+        Info.innerHTML = ``;
+      } else {
+        document.querySelector('.card-body').innerHTML = '<button class="card-log"><a href="/login">Login</a></button><button class="card-log"><a href="/signup">Signup</a></button>';
+        document.querySelector('#info').innerHTML = `<p id="info">If you want to use you must register/log in</p>`
+      }
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+</script>

@@ -1,0 +1,386 @@
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     color: whitesmoke;
+}
+body{
+     background: #444;
+}
+nav{
+     border-bottom: 1px solid black;
+     display: flex;
+     justify-content: space-around;
+     padding-bottom: 10px;
+     background: #111;
+}
+.logo{
+     display: flex;
+}
+nav img{
+     width: 80px;
+     margin-top: 10px;
+}
+nav h2{
+     margin-top: 10px;
+     padding-top: 20px;
+     font-weight: 600;
+     border-bottom: 1px solid white;
+}
+nav h2 span{
+     font-size: 30px;
+     color: #4565a0;
+     font-family: "Poppins";
+}
+nav ol{
+     display: flex;
+     list-style: none;
+     justify-content: space-around;
+}
+nav ol li{
+     margin: 20px;
+     padding-top: 20px;
+     font-size: 20px;
+}
+nav ol li a:hover{
+     color: #4565a0;
+}
+.form-container h2{
+     text-align: center;
+     margin-bottom: 20px;
+     padding-bottom: 20px;
+     border-bottom: 1px solid white;
+     
+}
+.container{
+     height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: #444;
+}
+.form-container{
+     width: 600px;
+     margin: 0 auto;
+     padding: 40px;
+     border: 1px solid black;
+     border-radius: 5px;
+     font-size: 16px;
+     background: #000;
+}
+#Text{
+     color: #000;
+     padding: 20PX;
+     font-size: 16px;
+     font-weight: 700;
+}
+.form-group{
+     margin-bottom: 25px;
+     margin-top: 20px;
+     padding-bottom: 20px;
+}
+.form-group label{
+     display: block;
+     font-weight: bold;
+     margin-bottom: 15px;
+     margin-top: 15px;
+     font-size: 20px;
+}
+.form-group input
+{
+     width: 100%;
+     padding: 8px;
+     font-size: 16px;
+     border: 1px solid white; 
+     border-radius: 5px;
+     color: #000;
+}
+.submit-btn{
+     display: block;
+     width: 100%;
+     padding: 10px;
+     background: #472dbb;
+     color: white;
+     border: none;
+     font-size: 16px;
+     font-weight: bold;
+     border-radius: 5px;
+     cursor: pointer;
+}
+.submit-btn:hover{
+     background: #4565a0;
+}
+.form-container p{
+     font-size: 20px;
+     margin-top: 40px;
+}
+.form-container p a{
+     margin-left: 20px;
+}
+.form-container p a:hover{
+     color: #777;
+}
+
+
+.text{
+     width: 100%;
+     position: relative;
+     display: flex;
+     justify-content: center;
+     margin-bottom: 30px;
+
+}
+.div{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+}
+.bigbox{
+     width: 600px;
+     height:90vh ;
+     overflow: scroll;
+
+}
+
+#usergenerate{
+     width:700px;
+     height: 50px;
+     border-radius: 30px;
+     background: transparent;
+     padding-left: 40px;
+     padding-right: 60px;
+     font-size: 16px;
+}
+#btngenerteText{
+     position: absolute;
+     right: 33%;
+     top: 3px;
+     border-radius: 50%;
+     color: #000;
+     padding: 7px;
+}
+#btngenerteText i{
+     color: #000;
+     font-size: 25px;
+}
+
+input[type="file"]{
+     display: none;
+}
+.pic-label{
+display: inline-block;
+color: #fff;
+text-align: center;     
+font-size: 25px;
+margin-left: 14px;
+position: absolute;
+left: 32.5%;
+top: 3px;
+border-radius: 50%;
+color: #000;
+padding: 7px;
+}
+
+.container1 {
+     max-width: 400px; /*
+           Adjusted maximum width */
+     margin: 0 auto;
+     padding: 0 20px;
+     position: relative;
+}
+
+
+.con{
+     background: #444;
+     position: relative;
+     justify-content: center;
+}
+.con h1{
+     text-align: center;
+     font-size: 30px;
+}
+#geminiresponse{
+     margin-left: 10%;
+     margin-right: 10%;
+     max-height: 400px;
+     overflow: auto;
+     padding: 20px;
+     border-radius: 10px;
+     
+}
+   .card {
+     background-color: #222;
+     border-radius: 5px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+     padding: 20px;
+     max-height: 200px;
+     overflow: auto;
+     margin-top: 20px;
+     
+   }
+   .card h2 {
+     color: #007bff;
+     margin-top: 0;
+   }
+   .card p {
+     color: #ddd;
+     margin: 10px 0;
+   }
+   .card-img {
+     width: 100%;
+     height: 50%;
+     border-radius: 5px;
+     margin-bottom: 10px;
+   }
+   .card-button {
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     padding: 10px 20px;
+     border-radius: 5px;
+     cursor: pointer;
+     text-decoration: none;
+     display: block;
+     width: 100%;
+     margin-top: 10px;
+   }
+
+   .card-title{
+     text-align: center;
+     font-size: 18px;
+   }
+
+   .history{
+
+     padding: 20px;
+     border-radius: 20px 10px;
+     color: whitesmoke;
+     background: #472dbb;
+   }
+.his{
+     font-size: 20px;
+     margin-left: 30px;
+}
+
+   .board{
+     width: 100%;
+   }
+   .board a i{
+     font-size: 30px;
+   }
+   .red{
+     margin-top: -30px;
+   }
+   .logout{
+     margin-left: 30px;
+   }
+   
+   
+   footer{
+     position: absolute;
+     top: 100%;
+     height: 250px;
+     background: #111;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 70px;
+   }
+   footer i{
+     font-size: 22px;
+   }
+   footer h3{
+     font-size: 22px;
+     font-family: Arial, Helvetica, sans-serifs;
+   }
+
+.card1{
+     width: 500px;
+     height: 400px;
+     background: #222;
+     border-radius: 30px;
+}
+.tit{
+     width: 100%;
+     text-align: center;
+}
+.tit h1{
+     font-size: 50px;
+     font-weight: 600;
+     margin-bottom: 30px;
+     margin-top: 50px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+     letter-spacing: 1.9px;
+}
+.tit p{
+     font-size: 20px;
+     letter-spacing: 1.4px;
+     font-weight: 800;
+     margin-bottom: 50px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+     line-height: 35px;
+}
+.c-box{
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+.card1 p{
+     text-align: center;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+     font-size: 16px;
+
+}
+.card1 .card-body{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+}
+.card1 .card-body .card-log{
+     margin: 50px;
+     font-size: 25px;
+     background: #4565a0;
+     color: white;
+     padding: 20px;
+     border-radius: 20px;
+     text-decoration: none;
+}
+.card1 .logo{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+}
+.card1 img{width: 200px;}
+
+.news-con{
+     width: 450px;
+     height: 97vh;
+     background: white;
+     position: absolute;
+     top: 100px;
+     left: 0;
+     overflow: auto;
+}
+.news-con h2{
+     color: #222;
+     text-align: center;
+     font-size: 40px;
+     font-weight: 900;
+     padding: 30px;
+}
+.news-box{
+     width: 90%;
+     height: 110px;
+     color: black;
+     background: #222;
+     padding: 20px;
+     margin: 20px;
+     border-radius: 15px;
+     text-align: center;
+}
+.news-box a{
+     text-decoration: none;
+}
+

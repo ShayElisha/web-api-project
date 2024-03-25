@@ -1,0 +1,134 @@
+<div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit"><img src="search.png" alt=""></button>
+                </div>
+                <div class="user">
+                    <li id="user-info"></li>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <div class="box">
+                        <h1>{{users.length}}</h1>
+                        <h3><a href="/admin/addUSer">Users</a></h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="students.png" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>{{gem.length}}</h1>
+                        <h3><a href="">gemini generator</a></h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="teachers.png" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <h1>{{url.length}}</h1>
+                        <h3><a href="/admin/urls">URL</a></h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="schools.png" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box x">
+                        <h1 id="tut"></h1>
+                        <h3>משתמשים מחובריפ</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="income.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="content-2">
+                <div class="recent-payments">
+                    <div class="title">
+                        <h2>All Users</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Option</th>
+                        </tr>
+                        {{#each users}}
+                        <tr>
+                            <td>{{this.Username}}</td> <!-- שים לב לשימוש באות קטנה אם זה מה שמוגדר במודל שלך -->
+                            <td>{{this.Email}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                            <td>{{this.phon}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+                <div class="new-students">
+                    <div class="title">
+                        <h2>Administrators</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Profile</th>
+                            <th>Name</th>
+                            <th>title</th>
+                        </tr>
+                        <tr>
+                        {{#each users}}
+                            {{#if isAdmin}}
+                            <tr>
+                                <td><img src="/uploads/pics/{{this.profile}}"</td> <!-- שים לב לשימוש באות קטנה אם זה מה שמוגדר במודל שלך -->
+                                <td>{{this.Username}}</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                                <td>manager</td> <!-- דוגמה קבועה, התאם לפי צורך -->
+                            </tr>
+                            {{/if}}
+                        {{/each}}
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/api/session')
+        .then(response => { // הסוגריים שלמעלה צריכים להיות כאן, לא לפני ה-arrow
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.loggedIn) {
+                const userInfo = document.getElementById('user-info');
+                if (userInfo) { // Make sure the element exists
+                    userInfo.innerHTML = `<div class="red"><img src="/uploads/pics/${data.profilePicture}" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%;"> Hello, ${data.userName}<span class="logout"><a href="/logout">logout</a></span></div>`;
+                } else {
+                    console.error('Element #user-info not found.');
+                }
+            }
+        })
+        .catch(error => console.error('Error:', error));
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/session-count')
+        .then(response => response.json())
+        .then(data => {
+            // החלף את '{{api.session.length}}' ב-'data.count'
+            document.querySelector('.box #tut').innerText = data.count;
+        })
+        .catch(error => console.error('Error:', error));
+});
+
+
+</script>
+
+                            
+                        

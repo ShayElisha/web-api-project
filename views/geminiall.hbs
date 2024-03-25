@@ -1,0 +1,45 @@
+{{> navbar}}
+<div class="con">
+                    <h1>My AI</h1>
+               <div class="board">
+                    <label for="history" class="his">back to chat:</label><a href="/gemini" class="history a"><i class='bx bxs-chat'></i></a>
+                    </div>
+          <div class="div">
+               <div class="bigbox">
+          {{#each data}}
+          
+               <div class="card">
+          <div class="card-body">
+          <h5 class="card-title">{{this.question}}</h5>
+          <p class="card-text">{{this.answer}}</p>
+          </div>
+          </div>
+               {{/each}}
+               </div>
+               </div>
+
+<script>
+     document.getElementById('btngenerteText').addEventListener('click',(event)=>{
+          let Prompt=document.getElementById('usergenerate').value
+          console.log(Prompt)
+          fetch('/gemini',{
+                    method:'POST',body:JSON.stringify(
+                    {Prompt}
+                    ),
+                    headers:{
+                         "Content-Type":"application/json"
+                    }
+               }).then(res=>res.json()).then((data)=>{
+                    alert(data.text),
+                    document.getElementById('geminiresponse').innerText=data.text
+                    
+                    const hebrewRegex = /[\u0590-\u05FF]/;
+                    const isHebrew = hebrewRegex.test(Prompt);
+                    
+                    // Set the direction of the response text based on the language
+                    const responseDirection = isHebrew ? 'rtl' : 'ltr';
+                    document.getElementById('geminiresponse').style.direction = responseDirection;
+                    document.getElementById('geminiresponse').innerText = data.text
+               })
+     })
+</script>

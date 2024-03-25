@@ -1,0 +1,41 @@
+{{> navbar}}
+<div class="container">
+     <div class="form-container">
+     <h2>signup</h2>
+     <form action="/signup" enctype="multipart/form-data" method="post">
+     <div class="form-group">
+          <label for="Email">Email:</label>
+          <input type="email" id="Email" name="Email" placeholder="Enter Email" required autocomplete="on">
+     </div>
+     <div class="form-group">
+          <label for="Username">UserName:</label>
+          <input type="text" id="name" name="Username" placeholder="Enter Username" required autocomplete="off">
+     </div>
+     <div class="form-group">
+          <label for="birthdate">birth:</label>
+          <input type="date" id="birthdate" name="birthdate" required >
+     </div>
+     
+     <div class="form-group">
+          <label for="phon">phon:</label>
+          <input type="text" id="phon" name="phon" placeholder="Enter phone number" required autocomplete="on" pattern="05\d{8}">
+     </div>
+     <div class="form-group">
+          <label for="Password">Password:</label>
+          <input type="password" id="Password" name="Password" placeholder="Enter Password" required pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}">
+     </div>
+     <div class="form-group">
+          <label for="profile">picture:</label>
+          <input type="file" id="profile" name="profile" required>
+     </div>
+     <button type="submit" class="submit-btn">Signup</button>
+     </form>
+     <p>You have already account? <a href="/login">Login</a></p>
+</div>
+</div>
+<script>
+    // JavaScript to set max birthdate for 18 years old restriction
+    const today = new Date();
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+    document.getElementById('birthdate').setAttribute('max', maxDate);
+</script>
