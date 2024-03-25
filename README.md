@@ -5,7 +5,7 @@ to an existing service that works on sending emails automatically.
 
 
 
-
+Of course you have to create a working environment for yourself and install all the existing libraries in the code.
 
 
 
